@@ -26,7 +26,7 @@ public class Reply {
             case "每日签到":
                 break;
             case "签到":
-                game.singIn(qq);
+                game.signIn(qq);
                 break;
             case "开发团队":
                 game.developmentTeam();

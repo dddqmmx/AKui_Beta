@@ -18,7 +18,7 @@ public class Game {
         );
     }
 
-    public void singIn(long qq){
+    public void signIn(long qq){
            send(Control.singIn(qq));
     }
 

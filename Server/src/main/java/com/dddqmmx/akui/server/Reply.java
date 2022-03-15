@@ -19,7 +19,7 @@ public class Reply {
             case "isAdmin":
                 socketThread.send(String.valueOf(UserService.isAdmin(qq)));
                 break;
-            case "":
+            case "signIn":
                 game.signIn(qq);
 
         }
