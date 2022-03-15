@@ -47,6 +47,40 @@ public class Control {
         return false;
     }
 
+    public static String userInfo(long qq){
+        JSONObject json = new JSONObject();
+        json.put("command","userInfo");
+        json.put("qq",qq);
+        seedForServer(json.toString());
+        String line = null;
+        try {
+            while((line = Main.server.br.readLine()) != null){
+                System.out.println(line);
+                return line;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static String singIn(long qq){
+        JSONObject json = new JSONObject();
+        json.put("command","singIn");
+        json.put("qq",qq);
+        seedForServer(json.toString());
+        String line = null;
+        try {
+            while((line = Main.server.br.readLine()) != null){
+                System.out.println(line);
+                return line;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void seedForServer(String msg){
         Main.server.seed(msg);
     }

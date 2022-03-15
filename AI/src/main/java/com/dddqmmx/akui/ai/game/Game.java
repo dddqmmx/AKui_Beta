@@ -1,5 +1,7 @@
 package com.dddqmmx.akui.ai.game;
 
+import com.dddqmmx.akui.ai.Control;
+import com.dddqmmx.akui.ai.Main;
 import net.mamoe.mirai.event.events.MessageEvent;
 import net.mamoe.mirai.message.data.MessageChain;
 
@@ -14,6 +16,10 @@ public class Game {
                   "使用帮助||管理命令||系统商店\n" +
                   "打工系统||"
         );
+    }
+
+    public void singIn(long qq){
+           send(Control.singIn(qq));
     }
 
     public void developmentTeam(){
@@ -33,6 +39,11 @@ public class Game {
 
     public void getInfo(){
         send("发送[我的信息]查看自己信息");
+    }
+
+    public void userInfo(long qq){
+        send("========用户信息========\n" +
+                Control.userInfo(qq));
     }
 
     public void systemStore(){

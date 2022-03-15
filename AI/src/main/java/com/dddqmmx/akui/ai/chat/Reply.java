@@ -26,6 +26,7 @@ public class Reply {
             case "每日签到":
                 break;
             case "签到":
+                game.singIn(qq);
                 break;
             case "开发团队":
                 game.developmentTeam();
@@ -33,16 +34,29 @@ public class Reply {
             case "信息查看":
                 game.getInfo();
             case "我的信息":
+                game.userInfo(qq);
                 break;
             case "系统商店":
                 game.systemStore();
                 break;
-            case "su":
+        }
+        if (msg.indexOf(' ')!=-1){
+            String[] msgs = msg.split(" ");
+            if (msgs[0].equals("sudo")){
                 if (Control.isAdmin(qq)){
-                    send("你是管理员");
+                    switch (msgs[1]) {
+                        case "help":
+                            send("傻逼,自己做的软件还不知道怎么用???");
+                            break;
+                        case "":
+                            break;
+                        default:
+                            send("未知指令,请发送sudo help查看帮助");
+                    }
                 }else {
-                    send("你不是管理员");
+                    send("你不是管理员,不能使用该命令");
                 }
+            }
         }
     }
 
