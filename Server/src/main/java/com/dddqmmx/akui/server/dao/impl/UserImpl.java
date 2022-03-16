@@ -8,18 +8,49 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UserImpl extends BaseDao implements UserDao {
+
+    @Override
+    public int haveUser(long qq) {
+        String sql = "select count(qq) from user where qq = ?";
+        Object[] objects = {qq};
+        ResultSet resultSet = executeQuery(sql,objects);
+        try {
+            if (resultSet.next()) {
+                return resultSet.getInt("count(qq)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     @Override
     public long getMoney(long qq) {
         String sql = "select money from user where qq = ?";
         Object[] objects = {qq};
         ResultSet resultSet = executeQuery(sql,objects);
         try {
-            resultSet.next();
-            return resultSet.getLong("money");
+            if (resultSet.next()) {
+                return resultSet.getLong("money");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    @Override
+    public int setMoney(long qq, long money) {
+        String sql = null;
+        Object[] objects = null;
+        if (haveUser(qq) > 0) {
+            sql = "update user set money = ? where qq = ?";
+            objects = new Object[]{money,qq};
+        } else {
+            sql = "insert into user values (?,?,default)";
+            objects = new Object[]{qq,money};
+        }
+        return executeUpdate(sql,objects);
     }
 
     @Override
