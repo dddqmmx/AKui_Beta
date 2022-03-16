@@ -66,7 +66,7 @@ public class Control {
 
     public static String singIn(long qq){
         JSONObject json = new JSONObject();
-        json.put("command","singIn");
+        json.put("command","signIn");
         json.put("qq",qq);
         seedForServer(json.toString());
         String line = null;

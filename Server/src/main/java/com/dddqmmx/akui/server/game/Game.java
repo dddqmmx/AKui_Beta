@@ -1,6 +1,7 @@
 package com.dddqmmx.akui.server.game;
 
 import com.dddqmmx.akui.server.Main;
+import com.dddqmmx.akui.server.service.SignInService;
 import com.dddqmmx.akui.server.service.UserService;
 import com.dddqmmx.akui.server.util.SocketThread;
 
@@ -20,7 +21,7 @@ public class Game {
     }
 
     public void signIn(long qq){
-
+        socketThread.send(SignInService.signIn(qq));
     }
 
 }
