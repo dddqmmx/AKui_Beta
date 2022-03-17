@@ -12,16 +12,14 @@ import java.util.List;
 public class BackPackImpl extends BaseDao implements BackPackDao {
     @Override
     public List<BackPack> getBackPack(long qq) {
-        String sql = "select (select name from items where id = itemId) as name,number from back_pack where qq = ?";
+        String sql = "select itemId,number from back_pack where qq = ?";
         Object[] objects = {qq};
         ResultSet resultSet = executeQuery(sql,objects);
         List<BackPack> backPackList = new ArrayList<>();
         try {
             while (resultSet.next()){
                 BackPack backPack = new BackPack();
-                Items items = new Items();
-                items.setName(resultSet.getString("name"));
-                backPack.setItems(items);
+                backPack.setItemId(resultSet.getInt("itemId"));
                 backPack.setNumber(resultSet.getInt("number"));
                 backPackList.add(backPack);
             }

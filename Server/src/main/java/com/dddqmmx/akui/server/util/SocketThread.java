@@ -49,7 +49,7 @@ public class SocketThread extends Thread {
 
     public void send(String msg){
         System.out.println(msg);
-        pw.println(msg);
+        pw.println(msg.replaceAll("\n","CR/LF"));
         pw.flush();
     }
 }

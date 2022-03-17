@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class BackPack implements Serializable {
     private long qq;
-    private Items items;
+    private int itemId;
     private int number;
 
     public long getQq() {
@@ -15,12 +15,12 @@ public class BackPack implements Serializable {
         this.qq = qq;
     }
 
-    public Items getItems() {
-        return items;
+    public int getItemId() {
+        return itemId;
     }
 
-    public void setItems(Items items) {
-        this.items = items;
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
     public int getNumber() {

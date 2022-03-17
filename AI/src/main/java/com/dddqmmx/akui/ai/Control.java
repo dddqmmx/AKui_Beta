@@ -56,7 +56,7 @@ public class Control {
         try {
             while((line = Main.server.br.readLine()) != null){
                 System.out.println(line);
-                return line;
+                return line.replaceAll("CR/LF","\n");
             }
         }catch (Exception e){
             e.printStackTrace();

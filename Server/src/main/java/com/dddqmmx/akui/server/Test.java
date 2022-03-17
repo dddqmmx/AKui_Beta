@@ -11,10 +11,7 @@ public class Test {
         System.out.println("测试中...");
         //SignInService.signIn(1538080366L);
         List<BackPack> backPackList = BackPackService.getBackPack(1538080366L);
-        Iterator<BackPack> iterator = backPackList.iterator();
-        while (iterator.hasNext()){
-            BackPack backPack = iterator.next();
-            System.out.println(backPack.getItems().getName());
+        for (BackPack backPack : backPackList) {
             System.out.println(backPack.getNumber());
         }
     }
