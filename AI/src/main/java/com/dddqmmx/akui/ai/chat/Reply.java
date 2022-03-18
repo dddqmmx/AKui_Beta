@@ -3,9 +3,14 @@ package com.dddqmmx.akui.ai.chat;
 import com.dddqmmx.akui.ai.Control;
 import com.dddqmmx.akui.ai.Main;
 import com.dddqmmx.akui.ai.game.Game;
+import com.dddqmmx.akui.ai.util.GetImage;
+import net.mamoe.mirai.contact.Contact;
 import net.mamoe.mirai.event.events.MessageEvent;
 import net.mamoe.mirai.message.data.MessageChain;
+import net.mamoe.mirai.message.data.MessageChainBuilder;
 import org.json.JSONObject;
+
+import java.io.File;
 
 public class Reply {
 
@@ -58,6 +63,28 @@ public class Reply {
                 }
             }
         }
+    }
+
+    /**
+     * 关于AI聊天相关的回复 ps:一般不会调用ReplyFunction,不过说不定那天我脑抽就要调用了(悲)
+     * @param msg 收到的消息
+     */
+    public void chartReply(String msg, Contact contact){
+        //简单判断
+        switch(msg){
+            case "test":
+                send("测试用文本消息");
+                break;
+        }
+        //复杂判断
+        if (msg.matches(".*010.*")) {
+            send(new MessageChainBuilder()
+                    .append("我真的怀疑有些人闲的程度啊")
+                    .append(GetImage.get(new File("010.jpg"),contact))
+                    .build()
+            );
+        }
+        //狗屁都没有
     }
 
     public void send(String msg){
