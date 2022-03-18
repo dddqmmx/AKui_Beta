@@ -37,7 +37,7 @@ public class AI extends Thread {
         bot.getEventChannel().subscribeAlways(GroupMessageEvent.class, (event)->{
             Reply reply = new Reply(event);
             reply.game();
-            reply.chartReply(event.getMessage().toString(),event.getSender());
+            reply.chartReply(event.getMessage().contentToString(),event.getSender());
         });  //监听群消息
     }
 }

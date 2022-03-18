@@ -8,7 +8,6 @@ public class Main {
     public static Server server = null;
 
     public static void main(String[] args) {
-
         Console console = new Console();
         console.start();
 
@@ -17,5 +16,7 @@ public class Main {
 
         Control.newAI();
         Control.startAI();
+
+
     }
 }
