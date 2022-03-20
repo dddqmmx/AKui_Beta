@@ -4,17 +4,20 @@ import com.dddqmmx.akui.ai.Control;
 import com.dddqmmx.akui.ai.Main;
 import com.dddqmmx.akui.ai.game.Game;
 import com.dddqmmx.akui.ai.util.Upload;
+import com.dddqmmx.akui.ai.util.Web;
 import net.mamoe.mirai.contact.Contact;
 import net.mamoe.mirai.event.events.MessageEvent;
-import net.mamoe.mirai.internal.message.LightAppStruct;
 import net.mamoe.mirai.message.code.MiraiCode;
 import net.mamoe.mirai.message.data.MessageChain;
 import net.mamoe.mirai.message.data.MessageChainBuilder;
 import net.mamoe.mirai.message.data.MusicKind;
 import net.mamoe.mirai.message.data.MusicShare;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class Reply {
 
@@ -66,20 +69,39 @@ public class Reply {
                     send("你不是管理员,不能使用该命令");
                 }
             }else if (msgs[0].equals("点歌")){
-                String name = msgs[1];
-
+                String name = "";
+                for (int i = 1; i< msgs.length;i++){
+                    name += msgs[i];
+                }
+                System.out.println(name);
+                try {
+                    JSONObject json = new JSONObject(Web.loadWeb("http://49.232.209.180:20041/api/search/song?keyword="+URLEncoder.encode(name, StandardCharsets.UTF_8)+"&type=wy&n=1"));
+                    JSONObject musicJson = json.getJSONArray("data").getJSONObject(0);
+                    MusicShare musicShare= new MusicShare(MusicKind.NeteaseCloudMusic,
+                            musicJson.getString("media_name"),
+                            musicJson.getString("author_name"),
+                            "https://y.music.163.com/m/song?id=1345485069&uct=9pqh4%2FZCB%2F7G%2FIuUvEytRQ%3D%3D&app_version=8.7.03",
+                            musicJson.getString("imgUrl"),
+                            musicJson.getString("songUrl"));
+                    send(new MessageChainBuilder()
+                            .append(musicShare)
+                            .build()
+                    );
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
     public void chartReply(String msg, Contact contact){
         //简单判断
-        System.out.println(msg);
+        // System.out.println(msg);
         switch(msg){
             case "test":
                 send("测试用文本消息");
                 break;
-            case "点歌 冬の花":
+            /*case "点歌 冬の花":
                 MusicShare musicShare= new MusicShare(MusicKind.NeteaseCloudMusic,
                         "冬の花 (日剧《后妻业》主题曲 ； ドラマ『後妻業』主題歌",
                         "宮本浩次",
@@ -91,7 +113,7 @@ public class Reply {
                         .append(musicShare)
                         .build()
                 );
-                //send(chain);
+                //send(chain);*/
         }
         //复杂判断
         if (msg.matches(".*010.*")) {
