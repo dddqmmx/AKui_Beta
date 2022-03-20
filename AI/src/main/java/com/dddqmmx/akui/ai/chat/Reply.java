@@ -65,6 +65,9 @@ public class Reply {
                 }else {
                     send("你不是管理员,不能使用该命令");
                 }
+            }else if (msgs[0].equals("点歌")){
+                String name = msgs[1];
+
             }
         }
     }
@@ -77,8 +80,6 @@ public class Reply {
                 send("测试用文本消息");
                 break;
             case "点歌 冬の花":
-                //MessageChain messageChain = MiraiCode.deserializeMiraiCode("[mirai:origin:MUSIC_SHARE]MusicShare(kind=NeteaseCloudMusic, title=カタオモイ(Cover Aimer) (单相思), summary=夏色まつり, jumpUrl=https://y.music.163.com/m/song?id=1471767263&uct=9pqh4%2FZCB%2F7G%2FIuUvEytRQ%3D%3D&app_version=8.7.03, pictureUrl=http://p1.music.126.net/BQ9bhzDnu3uJrK4zzZ568w==/109951165243543070.jpg, musicUrl=http://music.163.com/song/media/outer/url?id=1471767263&userid=3338163624&sc=wmv, brief=[分享]カタオモイ(Cover Aimer) (单相思))\n" + "[分享]カタオモイ(Cover Aimer) (单相思)");
-                //
                 MusicShare musicShare= new MusicShare(MusicKind.NeteaseCloudMusic,
                         "冬の花 (日剧《后妻业》主题曲 ； ドラマ『後妻業』主題歌",
                         "宮本浩次",
