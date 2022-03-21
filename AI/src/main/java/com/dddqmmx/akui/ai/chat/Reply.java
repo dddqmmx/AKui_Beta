@@ -69,9 +69,9 @@ public class Reply {
                     send("你不是管理员,不能使用该命令");
                 }
             }else if (msgs[0].equals("点歌")){
-                String name = "";
-                for (int i = 1; i< msgs.length;i++){
-                    name += msgs[i];
+                String name = msgs[1];
+                for (int i = 2; i< msgs.length;i++){
+                    name += " " + msgs[i];
                 }
                 System.out.println(name);
                 try {
