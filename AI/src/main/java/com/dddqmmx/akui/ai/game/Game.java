@@ -18,6 +18,10 @@ public class Game {
         );
     }
 
+    public void signInInfo() {
+        send("发送[签到]即可签到完成");
+    }
+
     public void signIn(long qq){
            send(Control.singIn(qq));
     }
@@ -48,13 +52,7 @@ public class Game {
 
     public void systemStore(){
         send("========系统商店========\n" +
-                  "小布丁 0 米线\n" +
-                  "ASoul成员的骨灰 0 货币\n" +
-                  "便宜糖和高级白兰地 1 货币\n" +
-                  "替身箭 1 货币\n" +
-                  "石鬼面 1 货币\n" +
-                  "七海鲨鱼卫衣 999999 货币\n" +
-                  "======================\n" +
+                  Control.systemStore() +
                   "购买物品指令[购买 商品名 数量]"
         );
     }
@@ -66,4 +64,5 @@ public class Game {
     public void send(MessageChain messageChain){
         event.getSubject().sendMessage(messageChain);
     }
+
 }

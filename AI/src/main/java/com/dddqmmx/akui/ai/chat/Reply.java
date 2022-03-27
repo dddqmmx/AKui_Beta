@@ -36,6 +36,7 @@ public class Reply {
                 game.showMainMenu();
                 break;
             case "每日签到":
+                game.signInInfo();
                 break;
             case "签到":
                 game.signIn(qq);

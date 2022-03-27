@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private long qq;
-    private long money;
+
+
+
     private boolean isAdmin;
 
     public long getQQ() {

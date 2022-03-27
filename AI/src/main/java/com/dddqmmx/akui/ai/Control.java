@@ -81,6 +81,22 @@ public class Control {
         return null;
     }
 
+    public static String systemStore(){
+        JSONObject json = new JSONObject();
+        json.put("command","systemStore");
+        seedForServer(json.toString());
+        String line = null;
+        try {
+            while((line = Main.server.br.readLine()) != null){
+                System.out.println(line);
+                return line.replaceAll("CR/LF","\n");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void seedForServer(String msg){
         Main.server.seed(msg);
     }
