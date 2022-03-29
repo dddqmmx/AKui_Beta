@@ -5,8 +5,6 @@ import java.io.Serializable;
 public class User implements Serializable {
     private long qq;
 
-
-
     private boolean isAdmin;
 
     public long getQQ() {
@@ -15,14 +13,6 @@ public class User implements Serializable {
 
     public void setQQ(long qq) {
         this.qq = qq;
-    }
-
-    public long getMoney() {
-        return money;
-    }
-
-    public void setMoney(long money) {
-        this.money = money;
     }
 
     public boolean isAdmin() {
