@@ -25,35 +25,6 @@ public class UserImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public long getMoney(long qq) {
-        String sql = "select money from user where qq = ?";
-        Object[] objects = {qq};
-        ResultSet resultSet = executeQuery(sql,objects);
-        try {
-            if (resultSet.next()) {
-                return resultSet.getLong("money");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return 0;
-    }
-
-    @Override
-    public int setMoney(long qq, long money) {
-        String sql = null;
-        Object[] objects = null;
-        if (haveUser(qq) > 0) {
-            sql = "update user set money = ? where qq = ?";
-            objects = new Object[]{money,qq};
-        } else {
-            sql = "insert into user values (?,?,default)";
-            objects = new Object[]{qq,money};
-        }
-        return executeUpdate(sql,objects);
-    }
-
-    @Override
     public int isAdmin(long qq) {
         String sql = "select count(*) as a from user where qq = ? and isAdmin = true";
         Object[] objects = {qq};

@@ -19,7 +19,7 @@ public class Game {
     }
 
     public void userInfo(long qq){
-        String msg = "货币 : "+ UserService.getMoney(qq) +"\n"+
+        String msg = "货币 : " +"\n"+
                      "========物品列表========";
         List<BackPack> backPackList = BackPackService.getBackPack(qq);
         boolean haveItems = false;
