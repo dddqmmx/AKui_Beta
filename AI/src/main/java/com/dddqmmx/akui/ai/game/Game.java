@@ -46,12 +46,12 @@ public class Game {
     }
 
     public void userInfo(long qq){
-        send("========用户信息========\n" +
+        send("========用户信息========" +
                 Control.userInfo(qq));
     }
 
     public void systemStore(){
-        send("========系统商店========\n" +
+        send("========系统商店========" +
                   Control.systemStore() +
                   "购买物品指令[购买 商品名 数量]"
         );

@@ -2,9 +2,11 @@ package com.dddqmmx.akui.server.dao.impl;
 
 import com.dddqmmx.akui.server.dao.BaseDao;
 import com.dddqmmx.akui.server.dao.UserMoneyDao;
+import com.dddqmmx.akui.server.pojo.UserMoney;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,19 +33,22 @@ public class UserMoneyImpl extends BaseDao implements UserMoneyDao {
     }
 
     @Override
-    public Map<String, String> moneyList(long qq) {
+    public ArrayList<UserMoney> moneyList(long qq) {
         String sql = "select moneyId,number from user_money where qq = ?";
         Object[] objects = {qq};
         ResultSet resultSet = executeQuery(sql,objects);
-        Map<String, String> map = null;
+        ArrayList<UserMoney> userMoneyList = new ArrayList<>();
         try {
             while (resultSet.next()){
-                map.put(resultSet.getString("moneyId"),resultSet.getString("number"));
+                UserMoney userMoney = new UserMoney();
+                userMoney.setMoneyId(resultSet.getInt("moneyId"));
+                userMoney.setNumber(resultSet.getInt("number"));
+                userMoneyList.add(userMoney);
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return map;
+        return userMoneyList;
     }
 
 }
