@@ -33,11 +33,11 @@ public class UserMoneyImpl extends BaseDao implements UserMoneyDao {
     }
 
     @Override
-    public ArrayList<UserMoney> moneyList(long qq) {
+    public List<UserMoney> moneyList(long qq) {
         String sql = "select moneyId,number from user_money where qq = ?";
         Object[] objects = {qq};
         ResultSet resultSet = executeQuery(sql,objects);
-        ArrayList<UserMoney> userMoneyList = new ArrayList<>();
+        List<UserMoney> userMoneyList = new ArrayList<>();
         try {
             while (resultSet.next()){
                 UserMoney userMoney = new UserMoney();

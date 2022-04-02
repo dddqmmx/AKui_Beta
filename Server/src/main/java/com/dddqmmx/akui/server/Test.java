@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Test {
     public static void main(String[] args) {
-        ArrayList<UserMoney> moneyList = UserMoneyService.moneyList(1538080366L);
+        List<UserMoney> moneyList = UserMoneyService.moneyList(1538080366L);
         for (UserMoney userMoney : moneyList){
             System.out.println(userMoney.getMoneyId()+" = "+ userMoney.getNumber());
         }

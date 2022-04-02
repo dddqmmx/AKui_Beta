@@ -5,13 +5,14 @@ import com.dddqmmx.akui.server.dao.impl.UserMoneyImpl;
 import com.dddqmmx.akui.server.pojo.UserMoney;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserMoneyService {
     private static UserMoneyDao userMoneyDao = new UserMoneyImpl();
     public static int getMoney(long qq,int itemId){
         return userMoneyDao.getMoney(qq,itemId);
     }
-    public static ArrayList<UserMoney> moneyList(long qq){
+    public static List<UserMoney> moneyList(long qq){
         return userMoneyDao.moneyList(qq);
     }
 }

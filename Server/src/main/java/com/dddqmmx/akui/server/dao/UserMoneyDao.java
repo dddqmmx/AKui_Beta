@@ -9,5 +9,5 @@ import java.util.Map;
 public interface UserMoneyDao {
     int getMoney(long qq,int itemId);
     int setMoney();
-    ArrayList<UserMoney> moneyList(long qq);
+    List<UserMoney> moneyList(long qq);
 }
