@@ -61,7 +61,9 @@ public class Reply {
                         case "help":
                             send("傻逼,自己做的软件还不知道怎么用???");
                             break;
-                        case "":
+                        case "closeAI":
+                            send("正在关闭");
+                            System.exit(1);
                             break;
                         default:
                             send("未知指令,请发送sudo help查看帮助");
