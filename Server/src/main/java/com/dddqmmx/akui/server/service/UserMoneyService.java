@@ -9,8 +9,11 @@ import java.util.List;
 
 public class UserMoneyService {
     private static UserMoneyDao userMoneyDao = new UserMoneyImpl();
-    public static int getMoney(long qq,int itemId){
-        return userMoneyDao.getMoney(qq,itemId);
+    public static int getMoney(long qq,int moneyId) {
+        return userMoneyDao.getMoney(qq, moneyId);
+    }
+    public static boolean setMoney(long qq,int moneyId,int number){
+        return userMoneyDao.setMoney(qq,moneyId,number) > 0;
     }
     public static List<UserMoney> moneyList(long qq){
         return userMoneyDao.moneyList(qq);

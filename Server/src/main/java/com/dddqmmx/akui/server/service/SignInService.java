@@ -34,10 +34,9 @@ public class SignInService {
             nextSignInTime = calendar.getTime();
         }
         if (null == nextSignInTime || new Date().compareTo(nextSignInTime) > 0){
-            /*setSingInTime(qq,new Date());
-            UserService.setMoney(qq,UserService.getMoney(qq)+1);
-            return "签到成功,当前货币数量"+ UserService.getMoney(qq)*/;
-            return "";
+            setSingInTime(qq,new Date());
+            UserMoneyService.setMoney(qq,1,UserMoneyService.getMoney(qq,1)+1);
+            return "签到成功,当前货币数量"+ UserMoneyService.getMoney(qq,1);
         }else{
             return "你今天已经签到过了,请明天再来";
         }

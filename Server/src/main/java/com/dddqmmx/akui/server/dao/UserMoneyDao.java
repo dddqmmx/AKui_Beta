@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 public interface UserMoneyDao {
-    int getMoney(long qq,int itemId);
-    int setMoney();
+    int haveMoney(long qq,int moneyId);
+    int getMoney(long qq,int moneyId);
+    int setMoney(long qq,int moneyId,int number);
     List<UserMoney> moneyList(long qq);
 }

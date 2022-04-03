@@ -13,9 +13,24 @@ import java.util.Map;
 public class UserMoneyImpl extends BaseDao implements UserMoneyDao {
 
     @Override
-    public int getMoney(long qq,int itemId) {
+    public int haveMoney(long qq, int moneyId) {
+        String sql = "select count(qq) from user_money where qq = ?";
+        Object[] objects = {qq,moneyId};
+        ResultSet resultSet = executeQuery(sql,objects);
+        try {
+            if (resultSet.next()) {
+                return resultSet.getInt("count(qq)");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    @Override
+    public int getMoney(long qq,int moneyId) {
         String sql = "select number from user_money where qq = ? and moneyId = ?";
-        Object[] objects = {qq,itemId};
+        Object[] objects = {qq,moneyId};
         ResultSet resultSet = executeQuery(sql,objects);
         try {
             while (resultSet.next()){
@@ -28,8 +43,16 @@ public class UserMoneyImpl extends BaseDao implements UserMoneyDao {
     }
 
     @Override
-    public int setMoney() {
-        return 0;
+    public int setMoney(long qq,int moneyId,int number) {
+        if (haveMoney(qq,moneyId) > 0){
+            String sql = "update user_money set number = ? WHERE qq = ? and  moneyId = ?";
+            Object[] objects = {number,qq,moneyId};
+            return executeUpdate(sql,objects);
+        } else {
+            String sql = "insert into user_money values(qq = ?, moneyId = ?, number = ?)";
+            Object[] objects = {qq,number,moneyId};
+            return executeUpdate(sql,objects);
+        }
     }
 
     @Override
