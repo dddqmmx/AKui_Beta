@@ -1,11 +1,12 @@
 package com.dddqmmx.akui.server.game;
 
-import com.dddqmmx.akui.server.Main;
-import com.dddqmmx.akui.server.pojo.BackPack;
-import com.dddqmmx.akui.server.pojo.UserMoney;
+import com.dddqmmx.akui.server.service.pojo.BackPack;
+import com.dddqmmx.akui.server.service.pojo.Goods;
+import com.dddqmmx.akui.server.service.pojo.UserMoney;
 import com.dddqmmx.akui.server.service.*;
 import com.dddqmmx.akui.server.util.SocketThread;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -48,4 +49,12 @@ public class Game {
         socketThread.send(SignInService.signIn(qq));
     }
 
+    public void systemStore(){
+        String msg = "";
+        List<Goods> goodsList = GoodsService.goodsList();
+        for (Goods goods : goodsList){
+            msg += "\n"+ItemsService.getName(goods.getItemId()) + " " + goods.getNumber()+MoneyTypeService.getName(goods.getMoney());
+        }
+        socketThread.send(msg);
+    }
 }

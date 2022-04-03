@@ -1,10 +1,8 @@
 package com.dddqmmx.akui.server.dao;
 
-import com.dddqmmx.akui.server.pojo.UserMoney;
+import com.dddqmmx.akui.server.service.pojo.UserMoney;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public interface UserMoneyDao {
     int haveMoney(long qq,int moneyId);

@@ -10,7 +10,10 @@ public class Reply {
         System.out.println(msg);
         JSONObject json = new JSONObject(msg);
         String command = json.getString("command");
-        long qq = json.getLong("qq");
+        long qq = 0;
+        if (!json.isNull("qq")){
+            qq = json.getLong("qq");
+        }
         Game game = new Game(socketThread);
         switch (command){
             case "userInfo":
@@ -21,7 +24,10 @@ public class Reply {
                 break;
             case "signIn":
                 game.signIn(qq);
-
+                break;
+            case "systemStore":
+                game.systemStore();
+                break;
         }
     }
 }

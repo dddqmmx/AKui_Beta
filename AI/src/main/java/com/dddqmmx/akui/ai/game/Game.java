@@ -53,7 +53,7 @@ public class Game {
     public void systemStore(){
         send("========系统商店========" +
                   Control.systemStore() +
-                  "购买物品指令[购买 商品名 数量]"
+                  "\n购买物品指令[购买 商品名 数量]"
         );
     }
 

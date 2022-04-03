@@ -1,6 +1,6 @@
 package com.dddqmmx.akui.server.dao;
 
-import com.dddqmmx.akui.server.pojo.BackPack;
+import com.dddqmmx.akui.server.service.pojo.BackPack;
 
 import java.util.List;
 

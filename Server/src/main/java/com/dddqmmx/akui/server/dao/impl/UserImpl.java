@@ -2,7 +2,6 @@ package com.dddqmmx.akui.server.dao.impl;
 
 import com.dddqmmx.akui.server.dao.BaseDao;
 import com.dddqmmx.akui.server.dao.UserDao;
-import com.dddqmmx.akui.server.pojo.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

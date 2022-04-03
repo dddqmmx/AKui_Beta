@@ -1,4 +1,4 @@
-package com.dddqmmx.akui.server.pojo;
+package com.dddqmmx.akui.server.service.pojo;
 
 import java.io.Serializable;
 

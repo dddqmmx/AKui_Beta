@@ -2,9 +2,8 @@ package com.dddqmmx.akui.server.service;
 
 import com.dddqmmx.akui.server.dao.UserMoneyDao;
 import com.dddqmmx.akui.server.dao.impl.UserMoneyImpl;
-import com.dddqmmx.akui.server.pojo.UserMoney;
+import com.dddqmmx.akui.server.service.pojo.UserMoney;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserMoneyService {

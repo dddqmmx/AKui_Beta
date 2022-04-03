@@ -2,19 +2,18 @@ package com.dddqmmx.akui.server.dao.impl;
 
 import com.dddqmmx.akui.server.dao.BaseDao;
 import com.dddqmmx.akui.server.dao.UserMoneyDao;
-import com.dddqmmx.akui.server.pojo.UserMoney;
+import com.dddqmmx.akui.server.service.pojo.UserMoney;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class UserMoneyImpl extends BaseDao implements UserMoneyDao {
 
     @Override
     public int haveMoney(long qq, int moneyId) {
-        String sql = "select count(qq) from user_money where qq = ?";
+        String sql = "select count(qq) from user_money where qq = ? and moneyId = ?";
         Object[] objects = {qq,moneyId};
         ResultSet resultSet = executeQuery(sql,objects);
         try {

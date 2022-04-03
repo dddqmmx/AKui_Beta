@@ -7,7 +7,6 @@ import com.dddqmmx.akui.ai.util.Upload;
 import com.dddqmmx.akui.ai.util.Web;
 import net.mamoe.mirai.contact.Contact;
 import net.mamoe.mirai.event.events.MessageEvent;
-import net.mamoe.mirai.message.code.MiraiCode;
 import net.mamoe.mirai.message.data.MessageChain;
 import net.mamoe.mirai.message.data.MessageChainBuilder;
 import net.mamoe.mirai.message.data.MusicKind;
@@ -46,6 +45,7 @@ public class Reply {
                 break;
             case "信息查看":
                 game.getInfo();
+                break;
             case "我的信息":
                 game.userInfo(qq);
                 break;
@@ -104,8 +104,10 @@ public class Reply {
             case "test":
                 send("测试用文本消息");
                 break;
+            case "我需要被肯定":
+                send("压力马斯内");
         }
-        //复杂判断
+/*        //复杂判断
         if (msg.matches(".*010.*")) {
             URL url = this.getClass().getResource("/ybb.png");
             try {
@@ -119,7 +121,7 @@ public class Reply {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
     }
 
     public void send(String msg){

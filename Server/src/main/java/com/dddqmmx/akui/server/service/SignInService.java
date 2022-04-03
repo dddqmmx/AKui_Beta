@@ -2,8 +2,6 @@ package com.dddqmmx.akui.server.service;
 
 import com.dddqmmx.akui.server.dao.SignInDao;
 import com.dddqmmx.akui.server.dao.impl.SignInImpl;
-import com.dddqmmx.akui.server.game.Game;
-import com.dddqmmx.akui.server.pojo.User;
 
 import java.util.Calendar;
 import java.util.Date;

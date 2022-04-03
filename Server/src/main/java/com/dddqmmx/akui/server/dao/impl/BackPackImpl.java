@@ -2,8 +2,7 @@ package com.dddqmmx.akui.server.dao.impl;
 
 import com.dddqmmx.akui.server.dao.BackPackDao;
 import com.dddqmmx.akui.server.dao.BaseDao;
-import com.dddqmmx.akui.server.pojo.BackPack;
-import com.dddqmmx.akui.server.pojo.Items;
+import com.dddqmmx.akui.server.service.pojo.BackPack;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;

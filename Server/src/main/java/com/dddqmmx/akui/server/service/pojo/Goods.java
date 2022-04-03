@@ -1,19 +1,11 @@
-package com.dddqmmx.akui.server.pojo;
+package com.dddqmmx.akui.server.service.pojo;
 
 import java.io.Serializable;
 
-public class BackPack implements Serializable {
-    private long qq;
+public class Goods implements Serializable {
     private int itemId;
+    private int money;
     private int number;
-
-    public long getQq() {
-        return qq;
-    }
-
-    public void setQq(long qq) {
-        this.qq = qq;
-    }
 
     public int getItemId() {
         return itemId;
@@ -21,6 +13,14 @@ public class BackPack implements Serializable {
 
     public void setItemId(int itemId) {
         this.itemId = itemId;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public int getNumber() {
