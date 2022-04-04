@@ -14,6 +14,14 @@ public class Reply {
         if (!json.isNull("qq")){
             qq = json.getLong("qq");
         }
+        String name = null;
+        if (!json.isNull("name")){
+            name = json.getString("name");
+        }
+        int number = 0;
+        if (!json.isNull("number")){
+            number = json.getInt("number");
+        }
         Game game = new Game(socketThread);
         switch (command){
             case "userInfo":
@@ -28,6 +36,8 @@ public class Reply {
             case "systemStore":
                 game.systemStore();
                 break;
+            case "buy":
+                game.buy(name,number);
         }
     }
 }

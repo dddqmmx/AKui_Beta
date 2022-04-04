@@ -2,6 +2,7 @@ package com.dddqmmx.akui.server.dao.impl;
 
 import com.dddqmmx.akui.server.dao.BaseDao;
 import com.dddqmmx.akui.server.dao.UserDao;
+import com.dddqmmx.akui.server.service.GoodsService;
 import com.dddqmmx.akui.server.service.ItemsService;
 
 import java.sql.ResultSet;
@@ -42,7 +43,10 @@ public class UserImpl extends BaseDao implements UserDao {
     @Override
     public String buy(String name, int number) {
         int itemId = ItemsService.getId(name);
-        if ()
-        return null;
+        if (GoodsService.haveGoods(itemId)){
+            return "ok";
+        }else {
+            return "没有这种商品";
+        }
     }
 }

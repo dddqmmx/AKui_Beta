@@ -1,5 +1,6 @@
 package com.dddqmmx.akui.server.game;
 
+import com.dddqmmx.akui.server.dao.impl.UserImpl;
 import com.dddqmmx.akui.server.service.pojo.BackPack;
 import com.dddqmmx.akui.server.service.pojo.Goods;
 import com.dddqmmx.akui.server.service.pojo.UserMoney;
@@ -56,5 +57,9 @@ public class Game {
             msg += "\n"+ItemsService.getName(goods.getItemId()) + " " + goods.getNumber()+MoneyTypeService.getName(goods.getMoney());
         }
         socketThread.send(msg);
+    }
+
+    public void buy(String name,int number){
+        socketThread.send(UserService.buy(name,number));
     }
 }

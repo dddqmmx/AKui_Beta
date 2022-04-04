@@ -16,9 +16,11 @@ public class GoodsImpl extends BaseDao implements GoodsDao {
         Object[] objects = {id};
         ResultSet resultSet = executeQuery(sql,objects);
         try {
-
+            while (resultSet.next()){
+                return resultSet.getInt("sum");
+            }
         }catch (SQLException e){
-
+            e.printStackTrace();
         }
         return 0;
     }

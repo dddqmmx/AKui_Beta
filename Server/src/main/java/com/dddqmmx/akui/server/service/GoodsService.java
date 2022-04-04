@@ -8,6 +8,9 @@ import java.util.List;
 
 public class GoodsService {
     private static GoodsDao goodsDao = new GoodsImpl();
+    public static boolean haveGoods(int id) {
+        return goodsDao.haveGoods(id) > 0;
+    }
     public static List<Goods> goodsList(){
         return goodsDao.goodsList();
     }
