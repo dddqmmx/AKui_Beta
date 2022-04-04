@@ -93,6 +93,10 @@ public class Reply {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }else if (msgs[0].equals("购买")){
+                String name = msgs[1];
+                int number = Integer.parseInt(msgs[2]);
+                send(Control.buy(name,number));
             }
         }
     }

@@ -2,6 +2,7 @@ package com.dddqmmx.akui.server.dao.impl;
 
 import com.dddqmmx.akui.server.dao.BaseDao;
 import com.dddqmmx.akui.server.dao.UserDao;
+import com.dddqmmx.akui.server.service.ItemsService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,5 +37,12 @@ public class UserImpl extends BaseDao implements UserDao {
             e.printStackTrace();
         }
         return 0;
+    }
+
+    @Override
+    public String buy(String name, int number) {
+        int itemId = ItemsService.getId(name);
+        if ()
+        return null;
     }
 }
