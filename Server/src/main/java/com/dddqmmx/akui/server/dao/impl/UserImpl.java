@@ -44,7 +44,8 @@ public class UserImpl extends BaseDao implements UserDao {
     public String buy(String name, int number) {
         int itemId = ItemsService.getId(name);
         if (GoodsService.haveGoods(itemId)){
-            return "ok";
+            int money = GoodsService.getMoney(itemId)*number;
+            return "需要"+money;
         }else {
             return "没有这种商品";
         }

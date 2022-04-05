@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface GoodsDao {
     int haveGoods(int id);
+    int getMoney(int id);
     List<Goods> goodsList();
 }

@@ -11,6 +11,9 @@ public class GoodsService {
     public static boolean haveGoods(int id) {
         return goodsDao.haveGoods(id) > 0;
     }
+    public static int getMoney(int id){
+        return goodsDao.getMoney(id);
+    }
     public static List<Goods> goodsList(){
         return goodsDao.goodsList();
     }
