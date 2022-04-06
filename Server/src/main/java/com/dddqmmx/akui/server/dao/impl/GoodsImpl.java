@@ -26,7 +26,22 @@ public class GoodsImpl extends BaseDao implements GoodsDao {
     }
 
     @Override
-    public int getMoney(int id) {
+    public int getMoneyId(int id) {
+        String sql = "select moneyId from goods where itemId = ?";
+        Object[] objects = {id};
+        ResultSet resultSet = executeQuery(sql,objects);
+        try {
+            while (resultSet.next()){
+                return resultSet.getInt("moneyId");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    @Override
+    public int getNumber(int id) {
         String sql = "select number from goods where itemId = ?";
         Object[] objects = {id};
         ResultSet resultSet = executeQuery(sql,objects);

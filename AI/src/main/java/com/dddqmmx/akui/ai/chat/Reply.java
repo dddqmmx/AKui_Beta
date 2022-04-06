@@ -95,8 +95,13 @@ public class Reply {
                 }
             }else if (msgs[0].equals("购买")){
                 String name = msgs[1];
-                int number = Integer.parseInt(msgs[2]);
-                send(Control.buy(name,number));
+                int number = 0;
+                if (msgs.length < 2){
+                    send(Control.buy(qq,name,number));
+                    number=Integer.parseInt(msgs[2]);
+                }else {
+
+                }
             }
         }
     }
@@ -111,7 +116,7 @@ public class Reply {
             case "我需要被肯定":
                 send("压力马斯内");
         }
-/*        //复杂判断
+        //复杂判断
         if (msg.matches(".*010.*")) {
             URL url = this.getClass().getResource("/ybb.png");
             try {
@@ -125,7 +130,20 @@ public class Reply {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }*/
+        } else if(msg.matches(".*阿梓.*爷爷.*")){
+            URL url = this.getClass().getResource("/zhaoRuoYang.jpg");
+            try {
+                if (url != null) {
+                    send(new MessageChainBuilder()
+                            .append("米线!!!!")
+                            .append(Upload.getImage(url.openStream(),contact))
+                            .build()
+                    );
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void send(String msg){

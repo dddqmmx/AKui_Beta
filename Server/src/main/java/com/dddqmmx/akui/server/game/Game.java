@@ -59,7 +59,7 @@ public class Game {
         socketThread.send(msg);
     }
 
-    public void buy(String name,int number){
-        socketThread.send(UserService.buy(name,number));
+    public void buy(long qq,String name,int number){
+        socketThread.send(UserService.buy(qq,name,number));
     }
 }

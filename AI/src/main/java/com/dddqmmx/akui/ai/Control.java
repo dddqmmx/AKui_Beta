@@ -96,9 +96,10 @@ public class Control {
         }
         return null;
     }
-    public static String buy(String name, int number){
+    public static String buy(long qq,String name, int number){
         JSONObject json = new JSONObject();
         json.put("command","buy");
+        json.put("qq",qq);
         json.put("name",name);
         json.put("number",number);
         seedForServer(json.toString());

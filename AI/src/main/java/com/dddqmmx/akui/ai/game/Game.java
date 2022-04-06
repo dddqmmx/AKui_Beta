@@ -11,7 +11,7 @@ public class Game {
         this.event = event;
     }
     public void showMainMenu(){
-        send("==========阿葵==========\n" +
+        send("==========李奕==========\n" +
                   "每日签到||开发团队||信息查看\n" +
                   "使用帮助||管理命令||系统商店\n" +
                   "打工系统||"
@@ -28,6 +28,7 @@ public class Game {
 
     public void developmentTeam(){
         send("========开发团队========\n" +
+                  "官方群聊 : 759654390"+
                   "架构 : dddqmmx\n" +
                   "AI : dddqmmx\n" +
                   "服务端 : dddqmmx\n" +
@@ -36,6 +37,8 @@ public class Game {
                   "资金支持 : dddqmmx\n" +
                   "其他 : dddqmmx\n" +
                   "技术支持 : dddqmmx\n" +
+                  "dddqmmx的GitHub主页:\n" +
+                  "https://github.com/dddqmmx\n" +
                   "该AI基于mirai开源框架\n" +
                   "https://github.com/mamoe/mirai"
         );

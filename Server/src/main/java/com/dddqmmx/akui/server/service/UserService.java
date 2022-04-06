@@ -11,7 +11,7 @@ public class UserService {
     public static boolean isAdmin(long qq){
         return userDao.isAdmin(qq) > 0;
     }
-    public static String buy(String name,int number) {
-        return userDao.buy(name,number);
+    public static String buy(long qq,String name,int number) {
+        return userDao.buy(qq,name,number);
     };
 }

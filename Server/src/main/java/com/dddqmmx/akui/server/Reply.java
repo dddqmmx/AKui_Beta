@@ -37,7 +37,7 @@ public class Reply {
                 game.systemStore();
                 break;
             case "buy":
-                game.buy(name,number);
+                game.buy(qq,name,number);
         }
     }
 }
