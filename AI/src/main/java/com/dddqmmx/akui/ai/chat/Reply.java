@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.regex.Pattern;
 
 public class Reply {
 
@@ -94,13 +95,12 @@ public class Reply {
                     e.printStackTrace();
                 }
             }else if (msgs[0].equals("购买")){
-                String name = msgs[1];
-                int number = 0;
-                if (msgs.length < 2){
+                if (msgs.length < 2 || isInt(msgs[2])){
+                    String name = msgs[1];
+                    int number=Integer.parseInt(msgs[2]);
                     send(Control.buy(qq,name,number));
-                    number=Integer.parseInt(msgs[2]);
                 }else {
-
+                    send("你他妈能不能好好填参数");
                 }
             }
         }
@@ -117,7 +117,7 @@ public class Reply {
                 send("压力马斯内");
         }
         //复杂判断
-        if (msg.matches(".*010.*")) {
+       /* if (msg.matches(".*010.*")) {
             URL url = this.getClass().getResource("/ybb.png");
             try {
                 if (url != null) {
@@ -143,7 +143,7 @@ public class Reply {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
     }
 
     public void send(String msg){
@@ -158,4 +158,8 @@ public class Reply {
         Main.server.seed(commend);
     }
 
+    private static boolean isInt(String str) {
+        Pattern pattern = Pattern.compile("0|([-]?[1-9][0-9]*)");
+        return pattern.matcher(str).matches();
+    }
 }
