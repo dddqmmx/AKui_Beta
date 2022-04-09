@@ -49,7 +49,12 @@ public class UserImpl extends BaseDao implements UserDao {
             int money = GoodsService.getNumber(itemId)*number;
             int moneyId = GoodsService.getMoneyId(itemId);
             int userMoney = UserMoneyService.getMoney(qq,moneyId);
-            return "需要"+money+ MoneyTypeService.getName(moneyId)+",用户现在有"+userMoney+"个。"+(money < userMoney?"可以购买":"不能购买");
+            if(money < userMoney){
+                UserMoneyService.setMoney(qq,moneyId,userMoney-money);
+                return "购买成功";
+            } else {
+                return "需要"+money+ MoneyTypeService.getName(moneyId)+",用户现在有"+userMoney+"个。不能购买";
+            }
         }else {
             return "没有这种商品";
         }
