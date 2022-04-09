@@ -19,7 +19,7 @@ public class Game {
     }
 
     public void userInfo(long qq){
-        String msg = "";
+        String msg = "\n职业 : 无";
         List<UserMoney> userMoneyList = UserMoneyService.moneyList(qq);
         boolean haveMoney = false;
         for (UserMoney userMoney : userMoneyList){
@@ -29,7 +29,7 @@ public class Game {
             msg += "\n" + MoneyTypeService.getName(userMoney.getMoneyId()) +" : "+ userMoney.getNumber();
         }
         if (!haveMoney){
-            msg += "\n无";
+            msg += "\n货币:无";
         }
         msg += "\n========物品列表========";
         List<BackPack> backPackList = BackPackService.getBackPack(qq);
@@ -42,6 +42,8 @@ public class Game {
         }
         if (!haveItems){
             msg += "\n无";
+        } else {
+            msg += "\n使用物品[使用 物品名 数量]";
         }
         socketThread.send(msg);
     }

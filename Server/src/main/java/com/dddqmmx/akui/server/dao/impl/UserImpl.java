@@ -40,6 +40,21 @@ public class UserImpl extends BaseDao implements UserDao {
     }
 
     @Override
+    public int getProfession(long qq) {
+        String sql = "select professionId from user where qq = ?";
+        Object[] objects = {qq};
+        ResultSet resultSet = executeQuery(sql,objects);
+        try {
+            while (resultSet.next()){
+                return resultSet.getInt("professionId");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    @Override
     public String buy(long qq,String name, int number) {
         int itemId = ItemsService.getId(name);
         System.out.println(itemId);
