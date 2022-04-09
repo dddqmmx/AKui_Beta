@@ -95,12 +95,12 @@ public class Reply {
                     e.printStackTrace();
                 }
             }else if (msgs[0].equals("购买")){
-                if (msgs.length < 2 || isInt(msgs[2])){
+                if (msgs.length >= 3 && isInt(msgs[2])){
                     String name = msgs[1];
                     int number=Integer.parseInt(msgs[2]);
                     send(Control.buy(qq,name,number));
                 }else {
-                    send("你他妈能不能好好填参数");
+                    send("你他妈的能不能好好填参数");
                 }
             }
         }

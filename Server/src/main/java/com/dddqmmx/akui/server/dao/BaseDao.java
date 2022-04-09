@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class BaseDao {
 
-    private String url = "jdbc:mysql://localhost:3306/akui?serverTimezone=GMT-8&characterEncoding=utf8";
+    private String url = "jdbc:mysql://localhost:3306/akui?serverTimezone=Asia/Shanghai&characterEncoding=utf8";
     private String userName = "root";
     private String pwd = "114514";
 

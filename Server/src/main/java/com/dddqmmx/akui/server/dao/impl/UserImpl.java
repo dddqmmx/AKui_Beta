@@ -2,10 +2,7 @@ package com.dddqmmx.akui.server.dao.impl;
 
 import com.dddqmmx.akui.server.dao.BaseDao;
 import com.dddqmmx.akui.server.dao.UserDao;
-import com.dddqmmx.akui.server.service.GoodsService;
-import com.dddqmmx.akui.server.service.ItemsService;
-import com.dddqmmx.akui.server.service.MoneyTypeService;
-import com.dddqmmx.akui.server.service.UserMoneyService;
+import com.dddqmmx.akui.server.service.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,12 +42,14 @@ public class UserImpl extends BaseDao implements UserDao {
     @Override
     public String buy(long qq,String name, int number) {
         int itemId = ItemsService.getId(name);
+        System.out.println(itemId);
         if (GoodsService.haveGoods(itemId)){
             int money = GoodsService.getNumber(itemId)*number;
             int moneyId = GoodsService.getMoneyId(itemId);
             int userMoney = UserMoneyService.getMoney(qq,moneyId);
             if(money < userMoney){
                 UserMoneyService.setMoney(qq,moneyId,userMoney-money);
+                BackPackService.setItemNumber(qq,itemId,BackPackService.getItemNumber(qq,itemId)+number);
                 return "购买成功";
             } else {
                 return "需要"+money+ MoneyTypeService.getName(moneyId)+",用户现在有"+userMoney+"个。不能购买";

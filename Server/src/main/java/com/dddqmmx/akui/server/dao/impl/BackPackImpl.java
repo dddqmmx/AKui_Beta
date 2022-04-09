@@ -28,11 +28,31 @@ public class BackPackImpl extends BaseDao implements BackPackDao {
     }
 
     @Override
-    public int setItemNumber(long qq, int itemId, int number) {
-        if (haveItem(qq, itemId) > 0) {
-            
+    public int getItemNumber(long qq, int itemId) {
+        String sql = "select number from back_pack where qq = ? and itemId = ?";
+        Object[] objects = {qq,itemId};
+        ResultSet resultSet = executeQuery(sql,objects);
+        try {
+            while (resultSet.next()) {
+                return resultSet.getInt("number");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return 0;
+    }
+
+    @Override
+    public int setItemNumber(long qq, int itemId, int number) {
+        if (haveItem(qq, itemId) > 0) {
+            String sql = "update back_pack set number = ? where qq = ? and itemId = ?";
+            Object[] objects = {number, qq, itemId};
+            return executeUpdate(sql,objects);
+        }else {
+            String sql = "insert into back_pack values (?,?,?)";
+            Object[] objects = {qq, itemId, number};
+            return executeUpdate(sql,objects);
+        }
     }
 
     @Override

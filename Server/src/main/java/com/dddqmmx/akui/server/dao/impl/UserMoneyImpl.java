@@ -28,7 +28,6 @@ public class UserMoneyImpl extends BaseDao implements UserMoneyDao {
 
     @Override
     public int getMoney(long qq,int moneyId) {
-        System.out.println(qq+" "+moneyId);
         String sql = "select number from user_money where qq = ? and moneyId = ?";
         Object[] objects = {qq,moneyId};
         ResultSet resultSet = executeQuery(sql,objects);

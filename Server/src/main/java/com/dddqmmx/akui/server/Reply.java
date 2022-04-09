@@ -38,6 +38,7 @@ public class Reply {
                 break;
             case "buy":
                 game.buy(qq,name,number);
+                break;
         }
     }
 }

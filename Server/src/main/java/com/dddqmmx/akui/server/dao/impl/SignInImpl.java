@@ -31,7 +31,7 @@ public class SignInImpl extends BaseDao implements SignInDao {
         Object[] objects = {qq};
         ResultSet resultSet = executeQuery(sql,objects);
         try {
-            if (resultSet.next()){
+            while (resultSet.next()){
                 return resultSet.getDate("time");
             }
         } catch (SQLException e) {
@@ -42,9 +42,12 @@ public class SignInImpl extends BaseDao implements SignInDao {
 
     @Override
     public int setSingInTime(long qq,Date time) {
+        System.out.println(time);
         String sql = null;
         Object[] objects = null;
-        if (haveSingIn(qq) > 0) {
+        int haveSingIn =haveSingIn(qq);
+        if (haveSingIn > 0) {
+            System.out.println("update");
             sql = "update sign_in set time = ? where qq = ?";
             objects = new Object[]{time,qq};
         } else {
