@@ -19,7 +19,7 @@ public class Game {
     }
 
     public void userInfo(long qq){
-        String msg = "\n职业 : 无";
+        String msg = "\n职业 : "+ProfessionService.getName(UserService.getProfession(qq));
         List<UserMoney> userMoneyList = UserMoneyService.moneyList(qq);
         boolean haveMoney = false;
         for (UserMoney userMoney : userMoneyList){

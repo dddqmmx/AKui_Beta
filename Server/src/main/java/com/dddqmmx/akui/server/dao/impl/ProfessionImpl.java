@@ -9,6 +9,7 @@ public class ProfessionImpl extends BaseDao implements ProfessionDao {
 
     @Override
     public String getName(int id) {
+        System.out.println(id);
         String sql = "select name from profession where id = ?";
         Object[] objects = {id};
         ResultSet resultSet = executeQuery(sql,objects);
@@ -19,6 +20,6 @@ public class ProfessionImpl extends BaseDao implements ProfessionDao {
         } catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return "无";
     }
 }

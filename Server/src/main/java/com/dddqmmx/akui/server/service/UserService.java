@@ -8,6 +8,7 @@ public class UserService {
     public static boolean haveUser(long qq){
         return userDao.haveUser(qq) > 0;
     }
+    public static int getProfession(long qq){return userDao.getProfession(qq);}
     public static boolean isAdmin(long qq){
         return userDao.isAdmin(qq) > 0;
     }
